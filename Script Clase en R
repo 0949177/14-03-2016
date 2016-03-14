@@ -1,3 +1,17 @@
+###Importar
+indi3<-ts(read.csv(("C:\\Users\\SALA-C24\\Desktop\\IndicadoresENOE_2016-03-14.csv"),header=T),frequency=4,start=2005)
+class(indi3)
+desoparcial<-ts(indi3[,1],start = 2005,frequency =4) #Hazme serie de tiempo de mi base indi3 hazla serie tiempo y llamala
+asala<-ts(indi3[,2],start = 2005,frequency = 4)
+til1<-ts(indi3[,3],start = 2005,frequency = 4)
+seriemultiple<-ts.intersect(desoparcial,asala,til1)
+plot(seriemultiple,main="Serie de Timepo Múltiple",xlab="Años",ylab="Numero de personas",col="red")
+seriemultiple
+#### Separar la serie de tiempo dependiendo del análisis
+seriemultiple05.09<-window(seriemultiple,start = c(2005,1),end = c(2009,4)) ##Se tiene que especificar el trimestre
+seriemultiple10.15<-window(seriemultiple,start = c(2010,1),end = c(2015,4))
+plot(seriemultiple05.09,main="Serie de Timepo Múltiple",xlab="Años",ylab="Numero de personas",col="red")
+plot(seriemultiple10.15,main="Serie de Timepo Múltiple",xlab="Años",ylab="Numero de personas",col="red")
 #Equipo:Emmanuel Gonzalez Escobar, Karla del Carmen Hernández  e  Martin Isaac Leon Serrano
 basedatos<- ts(read.csv(("C:\\Users\\SALA-C22\\Downloads\\basedatos.csv"), header=T), frequency = 12, start = 2013)
 basedatos
